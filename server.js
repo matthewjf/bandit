@@ -16,7 +16,8 @@ var router = express.Router();
 var remotes = require('./remotes');
 
 router.route('/').get(function(req, res) {
-  res.status(200).json(remotes.all());
+  // res.status(200).json(remotes.all());
+  res.status(200).json(lircNode.remotes);
 });
 
 router.route('/list').get(function(req, res) {
@@ -28,7 +29,9 @@ router.route('/list/:remote').get(function(req, res) {
 });
 
 router.route('/remotes/:remote/:command').get(function(req, res) {
-
+  lircNode.irsend.send_once(req.params.remote, req.params.command, function () {
+    res.status(200).json('ok');
+  });
 });
 
 app.use('/api', router);
