@@ -27,7 +27,19 @@ router.route('/list/:remote').get(function(req, res) {
 });
 
 router.route('/remotes/:remote/:command').get(function(req, res) {
-  lircNode.irsend.send_once(req.params.remote, req.params.command, function () {
+  lircNode.irsend.send_once(req.params.remote, req.params.command, function (err, stdout, stderr) {
+    res.status(200).json('ok');
+  });
+});
+
+router.route('/remotes/:remote/:command/send_start').get(function(req, res) {
+  lircNode.irsend.send_start(req.params.remote, req.params.command, function (err, stdout, stderr) {
+    res.status(200).json('ok');
+  });
+});
+
+router.route('/remotes/:remote/:command/send_stop').get(function(req, res) {
+  lircNode.irsend.send_stop(req.params.remote, req.params.command, function (err, stdout, stderr) {
     res.status(200).json('ok');
   });
 });
