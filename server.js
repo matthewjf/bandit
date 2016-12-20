@@ -16,16 +16,15 @@ var router = express.Router();
 var remotes = require('./remotes');
 
 router.route('/').get(function(req, res) {
-  // res.status(200).json(remotes.all());
   res.status(200).json(lircNode.remotes);
 });
 
 router.route('/list').get(function(req, res) {
-  res.status(200).json(remotes.list());
+  res.status(200).json(Object.keys(lircNode.remotes));
 });
 
 router.route('/list/:remote').get(function(req, res) {
-  res.status(200).json(remotes.get(req.params.remote));
+  res.status(200).json(lircNode.remotes[req.params.remote]);
 });
 
 router.route('/remotes/:remote/:command').get(function(req, res) {
