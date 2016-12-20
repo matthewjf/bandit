@@ -13,7 +13,6 @@ lircNode.init();
 
 // ROUTES
 var router = express.Router();
-var remotes = require('./remotes');
 
 router.route('/').get(function(req, res) {
   res.status(200).json(lircNode.remotes);
