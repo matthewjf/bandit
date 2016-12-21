@@ -45,6 +45,7 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
   lirc.irsend.send_stop(req.params.remote, req.params.command, irsendCB(res));
 });
 
+var irReceive = require('./ir_receive');
 router.route('/remotes/learn').get(function(req, res) {
   irReceive.startRecord(res);
 });
