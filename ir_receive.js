@@ -8,18 +8,12 @@ spawn.on('exit', function(code) {
   if (res) res.status(200).json('exit');
 });
 
-var init = function(response) {
-  // takes a response object so we can send data back to client
-  // maybe needs socket io to push?
+var startRecord = function(response) {
   res = response;
-};
-
-var startRecord = function() {
   var cmd = "irrecord -d /dev/lirc0 ~/lircd.conf\n";
   spawn.stdin.write(cmd);
 };
 
-var irreceive = {
-  init: init,
+module.exports = {
   startRecord: startRecord
 };
