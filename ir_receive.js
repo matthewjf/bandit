@@ -6,9 +6,12 @@ var startRecord = function(response) {
   // var cmd = "irrecord -d /dev/lirc0 ~/lircd.conf\n";
   var cmd = "\n";
   var child = spawn('bash');
-  child.stdout.on('data', function(data) {console.log(data);});
+  child.stdin.setEncoding('utf-8');
+  child.stdout.pipe(process.stdout);
   child.stdin.write("pwd\n");
   child.stdin.end();
+
+  res.status(200).json('ok');
 };
 
 module.exports = {
