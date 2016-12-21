@@ -18,11 +18,11 @@ router.route('/').get(function(req, res) {
   res.status(200).json(lirc.remotes);
 });
 
-router.route('/list').get(function(req, res) {
+router.route('/remotes').get(function(req, res) {
   res.status(200).json(Object.keys(lirc.remotes));
 });
 
-router.route('/list/:remote').get(function(req, res) {
+router.route('/remotes/:remote').get(function(req, res) {
   res.status(200).json(lirc.remotes[req.params.remote]);
 });
 
@@ -37,11 +37,11 @@ router.route('/remotes/:remote/:command').get(function(req, res) {
   lirc.irsend.send_once(req.params.remote, req.params.command, irsendCB(res));
 });
 
-router.route('/remotes/:remote/:command/send_start').get(function(req, res) {
+router.route('/remotes/:remote/:command/start').get(function(req, res) {
   lirc.irsend.send_start(req.params.remote, req.params.command, irsendCB(res));
 });
 
-router.route('/remotes/:remote/:command/send_stop').get(function(req, res) {
+router.route('/remotes/:remote/:command/stop').get(function(req, res) {
   lirc.irsend.send_stop(req.params.remote, req.params.command, irsendCB(res));
 });
 
