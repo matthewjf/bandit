@@ -8,40 +8,41 @@ app.set('port', 3000);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // LIRC NODE
-var lircNode = require('lirc_node');
-lircNode.init();
+var lirc = require('lirc_node');
+lirc.init();
 
 // ROUTES
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
-  res.status(200).json(lircNode.remotes);
+  res.status(200).json(lirc.remotes);
 });
 
 router.route('/list').get(function(req, res) {
-  res.status(200).json(Object.keys(lircNode.remotes));
+  res.status(200).json(Object.keys(lirc.remotes));
 });
 
 router.route('/list/:remote').get(function(req, res) {
-  res.status(200).json(lircNode.remotes[req.params.remote]);
+  res.status(200).json(lirc.remotes[req.params.remote]);
 });
 
+var irsendCB = function(res) {
+  return function(err, stdout, stderr) {
+    if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
+    else res.status(200).json({stdout: stdout});
+  };
+};
+
 router.route('/remotes/:remote/:command').get(function(req, res) {
-  lircNode.irsend.send_once(req.params.remote, req.params.command, function (err, stdout, stderr) {
-    res.status(200).json('ok');
-  });
+  lirc.irsend.send_once(req.params.remote, req.params.command, irsendCB(res));
 });
 
 router.route('/remotes/:remote/:command/send_start').get(function(req, res) {
-  lircNode.irsend.send_start(req.params.remote, req.params.command, function (err, stdout, stderr) {
-    res.status(200).json('ok');
-  });
+  lirc.irsend.send_start(req.params.remote, req.params.command, irsendCB(res));
 });
 
 router.route('/remotes/:remote/:command/send_stop').get(function(req, res) {
-  lircNode.irsend.send_stop(req.params.remote, req.params.command, function (err, stdout, stderr) {
-    res.status(200).json('ok');
-  });
+  lirc.irsend.send_stop(req.params.remote, req.params.command, irsendCB(res));
 });
 
 app.use('/api', router);
