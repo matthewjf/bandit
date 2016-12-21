@@ -15,15 +15,19 @@ lirc.init();
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
-  res.status(200).json(lirc.remotes);
+  if (lirc.remotes) res.status(200).json(lirc.remotes);
+  else res.status(404).json({err: 'no remotes found'});
 });
 
 router.route('/remotes').get(function(req, res) {
-  res.status(200).json(Object.keys(lirc.remotes));
+  if (lirc.remotes) res.status(200).json(Object.keys(lirc.remotes));
+  else res.status(404).json({err: 'no remotes found'});
 });
 
 router.route('/remotes/:remote').get(function(req, res) {
-  res.status(200).json(lirc.remotes[req.params.remote]);
+  var remote = lirc.remotes[req.params.remote];
+  if (remote) res.status(200).json(lirc.remotes[req.params.remote]);
+  else res.status(404).json({err: 'not found'});
 });
 
 var irsendCB = function(res) {
@@ -46,7 +50,7 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
 });
 
 var irReceive = require('./ir_receive');
-router.route('/remotes/learn').get(function(req, res) {
+router.route('/learn').get(function(req, res) {
   irReceive.startRecord(res);
 });
 
