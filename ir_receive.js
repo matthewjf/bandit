@@ -1,5 +1,5 @@
 var spawn = require('child_process').spawn;
-var data = {};
+var data = [];
 var res;
 
 var startRecord = function(response) {
@@ -7,21 +7,25 @@ var startRecord = function(response) {
   var cmd = "irrecord -d /dev/lirc0 ~/lircd.conf\n";
   var child = spawn('bash');
   child.stdin.setEncoding('utf-8');
-  
+
   child.stdout.on('data', function(output) {
-    data = output;
+    data.push(output);
   });
 
   child.stdout.on('close', function(code) {
     console.log('exited with code: ', code);
+    data = [];
   });
 
   child.stdin.write(cmd);
-  child.stdin.write('\n');
 
-  child.stdin.end();
+  setTimeout(function() {
+    child.stdin.write('\n');
 
-  res.status(200).json(data);
+    child.stdin.end();
+
+    res.status(200).json(data);
+  }, 1000);
 };
 
 module.exports = {
