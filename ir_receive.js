@@ -8,8 +8,8 @@ var startRecord = function(response) {
   var child = spawn('bash');
   child.stdin.setEncoding('utf-8');
 
-  child.stdout.on('data', function(output) {
-    data.push(output);
+  child.stdout.on('data', function(buffer) {
+    data.push(JSON.parse(buffer.toString('utf8')));
   });
 
   child.stdout.on('close', function(code) {
