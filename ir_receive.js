@@ -9,7 +9,7 @@ var startRecord = function(response) {
   child.stdin.setEncoding('utf-8');
 
   child.stdout.on('data', function(buffer) {
-    data.push(JSON.parse(buffer.toString('utf8')));
+    data.push(buffer.toString('utf8'));
   });
 
   child.stdout.on('close', function(code) {
