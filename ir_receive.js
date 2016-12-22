@@ -4,7 +4,13 @@ var res;
 
 var startRecord = function(response) {
   res = response;
-  var cmd = "irrecord -d /dev/lirc0 ~/lircd.conf\n";
+
+  var cmds = [
+    "sudo /etc/init.d/lirc stop\n",
+    "irrecord -d /dev/lirc0 ~/lircd.conf\n",
+    "\n"
+  ];
+
   var child = spawn('bash');
   child.stdin.setEncoding('utf-8');
 
@@ -21,15 +27,13 @@ var startRecord = function(response) {
     data = { out: [], err: [] };
   });
 
-  child.stdin.write(cmd);
+  cmds.forEach(function(cmd) {
+    console.log('running command: ', cmd);
+    child.stdin.write(cmd);
+  });
 
-  setTimeout(function() {
-    child.stdin.write('\n');
-
-    child.stdin.end();
-
-    res.status(200).json(data);
-  }, 1000);
+  res.status(200).json(data);
+  child.stdin.end();
 };
 
 module.exports = {
