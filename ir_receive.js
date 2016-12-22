@@ -1,5 +1,5 @@
 var spawn = require('child_process').spawn;
-var data = [];
+var data = { out: [], err: [] };
 var res;
 
 var startRecord = function(response) {
@@ -9,12 +9,16 @@ var startRecord = function(response) {
   child.stdin.setEncoding('utf-8');
 
   child.stdout.on('data', function(buffer) {
-    data.push(buffer.toString('utf8'));
+    data.out.push(buffer.toString('utf8'));
   });
 
-  child.stdout.on('close', function(code) {
+  child.stderr.on('data', function(buffer) {
+    data.err.push(buffer.toString('utf8'));
+  });
+
+  child.on('close', function(code) {
     console.log('exited with code: ', code);
-    data = [];
+    data = { out: [], err: [] };
   });
 
   child.stdin.write(cmd);
