@@ -31,9 +31,10 @@ var startRecord = function(response) {
     console.log('running command: ', cmd);
     child.stdin.write(cmd);
   });
-
-  res.status(200).json(data);
-  child.stdin.end();
+  setTimeout(function() {
+    res.status(200).json(data);
+    child.stdin.end();
+  }, 1000);
 };
 
 module.exports = {
