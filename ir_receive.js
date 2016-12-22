@@ -24,7 +24,7 @@ var startRecord = function(response) {
 
   child.on('close', function(code) {
     console.log('exited with code: ', code);
-    data = { out: [], err: [] };
+    // data = { out: [], err: [] };
   });
 
   cmds.forEach(function(cmd) {
