@@ -37,7 +37,7 @@ router.route('/remotes/:remote').get(function(req, res) {
 var irsendCB = function(res) {
   return function(err, stdout, stderr) {
     if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
-    else res.status(200).json({stdout: stdout});
+    else res.status(200).json({ status: 'ok', stdout: stdout });
   };
 };
 
