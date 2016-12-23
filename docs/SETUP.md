@@ -1,3 +1,6 @@
+# set up raspbian jessie
+https://www.raspberrypi.org/downloads/raspbian/
+
 # expand root partition
 ```
 $
@@ -97,3 +100,12 @@ change hostname of `/etc/hostname`:
 `remote`
 
 reboot
+
+# learn remote codes
+`sudo irrecord -d /dev/lirc0 /etc/lirc/lircd_<remote_name>.conf`
+
+add file `/etc/lirc/lircd.conf`:
+```
+# add this line for each remote file
+include "lircd_<remote_name>.conf"
+```
