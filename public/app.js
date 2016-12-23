@@ -16,7 +16,9 @@ xhr.onreadystatechange = function() {
             link.appendChild(text);
             link.title = text;
             link.href = '/api/remotes/' + remote + '/' + cmd;
-            frag.appendChild(link);
+            var p = document.createElement('p');
+            p.appendChild(link);
+            frag.appendChild(p);
           });
         });
         div.appendChild(frag);
