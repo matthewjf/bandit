@@ -2,6 +2,18 @@ var spawn = require('child_process').spawn;
 var data = { out: [], err: [] };
 var res;
 
+// #######################
+// stop lirc
+// run irrecord
+// accept remote commands
+// close child process
+// start lirc
+// #######################
+
+// todo:
+// commands are issued as POSTS
+// GET retrieves stdout
+
 var startRecord = function(response) {
   res = response;
 
@@ -24,7 +36,7 @@ var startRecord = function(response) {
 
   child.on('close', function(code) {
     console.log('exited with code: ', code);
-    // data = { out: [], err: [] };
+    data = { out: [], err: [] };
   });
 
   cmds.forEach(function(cmd) {

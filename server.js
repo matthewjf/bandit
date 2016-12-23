@@ -5,13 +5,17 @@ var app = express();
 
 // APP
 app.set('port', 3000);
-app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static('public'));
 
 // LIRC NODE
 var lirc = require('lirc_node');
 lirc.init();
 
 // ROUTES
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
+
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
@@ -49,10 +53,10 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
   lirc.irsend.send_stop(req.params.remote, req.params.command, irsendCB(res));
 });
 
-var irReceive = require('./ir_receive');
-router.route('/learn').get(function(req, res) {
-  irReceive.startRecord(res);
-});
+// var irReceive = require('./ir_receive');
+// router.route('/learn').get(function(req, res) {
+//   irReceive.startRecord(res);
+// });
 
 app.use('/api', router);
 
