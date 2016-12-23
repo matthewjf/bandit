@@ -1,31 +1,49 @@
 # expand root partition
+```
+$
 sudo raspi-config
 reboot
+```
 
 # update OS
+```
+$
 sudo apt-get update
 sudo apt-get upgrade
 sudo apt-get dist-upgrade
+```
 
 # update firmware
+```
+$
 sudo apt-get install git-core
 sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/rpi-update
 sudo rpi-update
+```
 
 # lighten up OS
+```
+$
 sudo apt-get purge libreoffice wolfram-engine sonic-pi scratch
 sudo apt-get autoremove
+```
 
 # install node
+```
+$
 sudo apt-get remove nodered -y
 sudo apt-get remove nodejs nodejs-legacy -y
 sudo apt-get remove npm  -y
 sudo apt-get autoremove
 sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
 sudo apt-get install -y nodejs
+```
 
 # install lirc
+```
+$
 sudo apt-get install lirc
+```
 
 # config
 add to `/etc/modules`:
@@ -65,3 +83,17 @@ LIRCMD_CONF=""
 
 add to `/boot/config.txt`:
 `dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22,gpio_in_pull=up`
+
+# configure hostname
+```
+$
+sudo apt-get install avahi-daemon
+```
+
+change last line of `/etc/hosts`:
+`127.0.1.1 remote`
+
+change hostname of `/etc/hostname`:
+`remote`
+
+reboot
