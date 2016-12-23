@@ -4,7 +4,7 @@ var path = require('path');
 var app = express();
 
 // APP
-app.set('port', 80);
+app.set('port', 3000);
 app.use('/public', express.static('public'));
 
 // LIRC NODE
