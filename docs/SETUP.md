@@ -1,14 +1,16 @@
-# set up raspbian jessie
+# RPI setup
+
+### set up raspbian jessie
 https://www.raspberrypi.org/downloads/raspbian/
 
-# expand root partition
+### expand root partition
 ```
 $
 sudo raspi-config
 reboot
 ```
 
-# update OS
+### update OS
 ```
 $
 sudo apt-get update
@@ -16,7 +18,7 @@ sudo apt-get upgrade
 sudo apt-get dist-upgrade
 ```
 
-# update firmware
+### update firmware
 ```
 $
 sudo apt-get install git-core
@@ -24,14 +26,14 @@ sudo wget http://goo.gl/1BOfJ -O /usr/bin/rpi-update && sudo chmod +x /usr/bin/r
 sudo rpi-update
 ```
 
-# lighten up OS
+### lighten up OS
 ```
 $
 sudo apt-get purge libreoffice wolfram-engine sonic-pi scratch
 sudo apt-get autoremove
 ```
 
-# install node
+### install node
 ```
 $
 sudo apt-get remove nodered -y
@@ -42,13 +44,13 @@ sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo bash -
 sudo apt-get install -y nodejs
 ```
 
-# install lirc
+### install lirc
 ```
 $
 sudo apt-get install lirc
 ```
 
-# config
+### config
 add to `/etc/modules`:
 ```
 lirc_dev
@@ -87,7 +89,7 @@ LIRCMD_CONF=""
 add to `/boot/config.txt`:
 `dtoverlay=lirc-rpi,gpio_in_pin=23,gpio_out_pin=22,gpio_in_pull=up`
 
-# configure hostname
+### configure hostname
 ```
 $
 sudo apt-get install avahi-daemon
@@ -101,8 +103,28 @@ change hostname of `/etc/hostname`:
 
 reboot
 
-# learn remote codes
-`sudo irrecord -d /dev/lirc0 /etc/lirc/lircd_<remote_name>.conf`
+### setup nginx
+```
+$
+sudo apt-get install nginx
+```
+
+remote `/usr/share/nginx/html/index.html`
+
+setup `/etc/nginx/sites-enabled/default`
+or `/etc/nginx/con.d/remote.conf`
+
+### learn remote codes
+```
+$
+sudo /etc/init.d/lirc stop
+sudo irrecord -d /dev/lirc0 /etc/lirc/lircd_<remote_name>.conf
+```
+rename remote name for each file generated
+```
+$
+sudo /etc/init.d/lirc start
+```
 
 add file `/etc/lirc/lircd.conf`:
 ```

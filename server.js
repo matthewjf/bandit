@@ -34,7 +34,7 @@ router.route('/remotes/:remote').get(function(req, res) {
   else res.status(404).json({err: 'not found'});
 });
 
-var irsendCB = function(res) {
+var execCB = function(res) {
   return function(err, stdout, stderr) {
     if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
     else res.status(200).json({ status: 'ok', stdout: stdout });
@@ -42,21 +42,25 @@ var irsendCB = function(res) {
 };
 
 router.route('/remotes/:remote/:command').get(function(req, res) {
-  lirc.irsend.send_once(req.params.remote, req.params.command, irsendCB(res));
+  lirc.irsend.send_once(req.params.remote, req.params.command, execCB(res));
 });
 
 router.route('/remotes/:remote/:command/start').get(function(req, res) {
-  lirc.irsend.send_start(req.params.remote, req.params.command, irsendCB(res));
+  lirc.irsend.send_start(req.params.remote, req.params.command, execCB(res));
 });
 
 router.route('/remotes/:remote/:command/stop').get(function(req, res) {
-  lirc.irsend.send_stop(req.params.remote, req.params.command, irsendCB(res));
+  lirc.irsend.send_stop(req.params.remote, req.params.command, execCB(res));
 });
 
 // var irReceive = require('./ir_receive');
 // router.route('/learn').get(function(req, res) {
 //   irReceive.startRecord(res);
 // });
+var exec = require('child_process').exec;
+router.route('shutdown').get(function(req, res) {
+  exec('shutdown now', execCB);
+});
 
 app.use('/api', router);
 
