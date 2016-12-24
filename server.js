@@ -16,6 +16,11 @@ app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+var exec = require('child_process').exec;
+app.get('shutdown', function(req, res) {
+  exec('shutdown now', execCB);
+});
+
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
@@ -57,10 +62,6 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
 // router.route('/learn').get(function(req, res) {
 //   irReceive.startRecord(res);
 // });
-var exec = require('child_process').exec;
-router.route('shutdown').get(function(req, res) {
-  exec('shutdown now', execCB);
-});
 
 app.use('/api', router);
 
