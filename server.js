@@ -12,6 +12,13 @@ var lirc = require('lirc_node');
 lirc.init();
 
 // ROUTES
+var execCB = function(res) {
+  return function(err, stdout, stderr) {
+    if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
+    else res.status(200).json({ status: 'ok', stdout: stdout });
+  };
+};
+
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
@@ -21,6 +28,7 @@ app.get('/shutdown', function(req, res) {
   exec('shutdown now', execCB);
 });
 
+// api routes
 var router = express.Router();
 
 router.route('/').get(function(req, res) {
@@ -38,13 +46,6 @@ router.route('/remotes/:remote').get(function(req, res) {
   if (remote) res.status(200).json(lirc.remotes[req.params.remote]);
   else res.status(404).json({err: 'not found'});
 });
-
-var execCB = function(res) {
-  return function(err, stdout, stderr) {
-    if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
-    else res.status(200).json({ status: 'ok', stdout: stdout });
-  };
-};
 
 router.route('/remotes/:remote/:command').get(function(req, res) {
   lirc.irsend.send_once(req.params.remote, req.params.command, execCB(res));

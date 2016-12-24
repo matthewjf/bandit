@@ -114,6 +114,9 @@ remote `/usr/share/nginx/html/index.html`
 setup `/etc/nginx/sites-enabled/default`
 or `/etc/nginx/con.d/remote.conf`
 
+run on boot `sudo systemctl enable nginx.service`
+check `sudo systemctl status nginx.service`
+
 ### learn remote codes
 ```
 $
@@ -131,3 +134,24 @@ add file `/etc/lirc/lircd.conf`:
 # add this line for each remote file
 include "lircd_<remote_name>.conf"
 ```
+
+### run node on boot
+add file `/etc/styemd/system/remote.service`:
+```
+[Service]
+WorkingDirectory=/home/pi/bandit
+ExecStart=/usr/bin/node /home/pi/bandit/server.js
+Restart=always
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=remote
+User=root
+Group=root
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target
+```
+
+run `sudo systemctl enable remote.service`
+check `sudo systemctl status remote.service`
