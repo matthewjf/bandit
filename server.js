@@ -28,6 +28,10 @@ app.get('/shutdown', function(req, res) {
   exec('shutdown now', execCB);
 });
 
+app.get('/api/htpc/wake', function(req, res) {
+  exec('wakeonlan htpc', execCB);
+});
+
 // api routes
 var router = express.Router();
 

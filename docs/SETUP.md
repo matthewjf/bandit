@@ -155,3 +155,11 @@ WantedBy=multi-user.target
 
 run `sudo systemctl enable remote.service`
 check `sudo systemctl status remote.service`
+
+### wakeonlan
+`sudo apt-get install wakeonlan`
+
+add file `/etc/ethers`:
+```
+MAC hostname
+```
