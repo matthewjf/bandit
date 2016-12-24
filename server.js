@@ -17,7 +17,7 @@ app.get('/', function(req, res) {
 });
 
 var exec = require('child_process').exec;
-app.get('shutdown', function(req, res) {
+app.get('/shutdown', function(req, res) {
   exec('shutdown now', execCB);
 });
 
