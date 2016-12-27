@@ -79,12 +79,12 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
 
 // initialize htpc commands
 var htpc = require('./htpc');
-var htpcCommands;
-htpc.getCommands(function(cmds) { htpcCommands = cmds; });
 
 // get all commands
 router.route('/htpc').get(function(req, res) {
-  res.status(200).json(htpcCommands);
+  htpc.getCommands(function(cmds) {
+    res.status(200).json(cmds);
+  });
 });
 
 router.route('/htpc/wake').get(function(req, res) {
@@ -93,12 +93,14 @@ router.route('/htpc/wake').get(function(req, res) {
 
 router.route('/htpc/:context/:command').get(function(req, res) {
   var ctx = req.params.context, cmd = req.params.command;
-  if (htpcCommands && htpcCommands[ctx] && htpcCommands[ctx][cmd]) {
-    htpc.sendCommand(ctx + cmd);
-    res.status(200).json({status: 'ok'});
-  } else {
-    res.status(404).json({err: 'not found'});
-  }
+  htpc.getCommands(function(commands) {
+    if (commands && commands[ctx] && commands[ctx][cmd]) {
+      htpc.sendCommand(ctx + cmd);
+      res.status(200).json({status: 'ok'});
+    } else {
+      res.status(404).json({err: 'not found'});
+    }
+  });
 });
 
 app.use('/api', router);
