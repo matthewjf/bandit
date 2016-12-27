@@ -163,3 +163,7 @@ add file `/etc/ethers`:
 ```
 MAC hostname
 ```
+
+### eventghost webserver
+add `Apple Bonjour for Windows` to handle lookup by hostname
+patch `webserver` plugin to send json response for index and set cors headers
