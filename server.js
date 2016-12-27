@@ -1,14 +1,12 @@
 var express = require('express');
 var http = require('http');
 var path = require('path');
-var cors = require('cors');
 var app = express();
 
 /**********************
   MIDDLEWARE
 **********************/
 app.set('port', 3000);
-app.use(cors());
 app.use('/public', express.static('public'));
 
 /**********************
