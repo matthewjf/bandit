@@ -109,7 +109,7 @@ $
 sudo apt-get install nginx
 ```
 
-remote `/usr/share/nginx/html/index.html`
+remove `/usr/share/nginx/html/index.html`
 
 setup `/etc/nginx/sites-enabled/default`
 or `/etc/nginx/con.d/remote.conf`
