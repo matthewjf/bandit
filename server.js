@@ -92,7 +92,7 @@ router.route('/htpc/wake').get(function(req, res) {
 router.route('/htpc/:context/:command').get(function(req, res) {
   var ctx = req.params.context, cmd = req.params.command;
   htpc.getCommands(function(commands) {
-    if (commands && commands[ctx] && commands[ctx][cmd]) {
+    if (commands && commands[ctx] && commands[ctx].indexOf(cmd) !== -1) {
       htpc.sendCommand(ctx + cmd);
       res.status(200).json({status: 'ok'});
     } else {

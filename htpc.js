@@ -39,7 +39,9 @@ var sendCommand = function(cmd) {
   http.get('http://matt-htpc.local/?' + cmd, function(res) {});
 };
 
+// TODO: handle repetition
 
 module.exports = {
-  getCommands: getCommands
+  getCommands: getCommands,
+  sendCommand: sendCommand
 };
