@@ -1,6 +1,21 @@
 var main = document.getElementById("app");
 
 /**********************
+ PI COMMANDS
+***********************/
+
+var shutdown = document.createElement("a");
+shutdown.appendChild(document.createTextNode('PI: shutdown'));
+shutdown.href = '/pi/shutdown';
+
+var reboot = document.createElement("a");
+reboot.appendChild(document.createTextNode('PI: reboot'));
+reboot.href = '/pi/reboot';
+
+main.appendChild(shutdown);
+main.appendChild(reboot);
+
+/**********************
  LIRC COMMANDS
 ***********************/
 
@@ -43,7 +58,7 @@ lircReq.onreadystatechange = function() {
   }
 };
 
-lircReq.open("GET", "/api", true);
+lircReq.open("GET", "/api/remotes", true);
 lircReq.send();
 
 /**********************
@@ -70,7 +85,7 @@ function handleHtpcReq(commands) {
       var text = document.createTextNode(linkText);
       link.appendChild(text);
       link.title = text;
-      link.href = 'http://matt-htpc.local/?' + ctx + cmd;
+      link.href = 'http://htpc.local/?' + ctx + cmd;
       link.href = '/api/htpc/' + ctx + '/' + cmd;
       var p = document.createElement('p');
       p.appendChild(link);

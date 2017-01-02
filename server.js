@@ -18,6 +18,8 @@ lirc.init();
 /**********************
   ROUTES
 **********************/
+var router = express.Router();
+
 var execCB = function(res) {
   return function(err, stdout, stderr) {
     if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
@@ -30,26 +32,30 @@ app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
-// shutdown raspberry pi
-var exec = require('child_process').exec;
-app.get('/shutdown', function(req, res) {
-  exec('shutdown now', execCB);
+// // list all commands
+router.route('/').get(function(req, res) {
+
 });
 
 /**********************
-  API
+  PI
 **********************/
-var router = express.Router();
-
-// list all commands
-router.route('/').get(function(req, res) {
-  if (lirc.remotes) res.status(200).json(lirc.remotes);
-  else res.status(404).json({err: 'no remotes found'});
+var exec = require('child_process').exec;
+app.get('/pi/shutdown', function(req, res) {
+  exec('shutdown now', execCB);
 });
+
+app.get('/pi/reboot', function(req, res) {
+  exec('reboot', execCB);
+});
+
+/**********************
+  REMOTES
+**********************/
 
 // list remotes
 router.route('/remotes').get(function(req, res) {
-  if (lirc.remotes) res.status(200).json(Object.keys(lirc.remotes));
+  if (lirc.remotes) res.status(200).json(lirc.remotes);
   else res.status(404).json({err: 'no remotes found'});
 });
 
@@ -74,6 +80,10 @@ router.route('/remotes/:remote/:command/start').get(function(req, res) {
 router.route('/remotes/:remote/:command/stop').get(function(req, res) {
   lirc.irsend.send_stop(req.params.remote, req.params.command, execCB(res));
 });
+
+/**********************
+  HTPC
+**********************/
 
 // initialize htpc commands
 var htpc = require('./htpc');
@@ -101,11 +111,13 @@ router.route('/htpc/:context/:command').get(function(req, res) {
   });
 });
 
+/**********************
+  START
+**********************/
+
+// namespace api routes
 app.use('/api', router);
 
-/**********************
-  START SERVER
-**********************/
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
