@@ -4,16 +4,19 @@ var main = document.getElementById("app");
  PI COMMANDS
 ***********************/
 
+var p = document.createElement('p');
 var shutdown = document.createElement("a");
 shutdown.appendChild(document.createTextNode('PI: shutdown'));
 shutdown.href = '/pi/shutdown';
+p.appendChild(shutdown);
+main.appendChild(p);
 
+p = document.createElement('p');
 var reboot = document.createElement("a");
 reboot.appendChild(document.createTextNode('PI: reboot'));
 reboot.href = '/pi/reboot';
-
-main.appendChild(shutdown);
-main.appendChild(reboot);
+p.appendChild(reboot);
+main.appendChild(p);
 
 /**********************
  LIRC COMMANDS
