@@ -1,10 +1,11 @@
 var http = require('http');
 var htpcCommands;
+var URL = 'http://htpc.local/';
 
 var getCommands = function(callback) {
   if (htpcCommands) callback(htpcCommands);
   else
-    http.get('http://matt-htpc.local/', function(res) {
+    http.get(URL, function(res) {
       var error;
       if (res.statusCode !== 200) {
         error = new Error('Request Failed.\n' +
@@ -36,10 +37,11 @@ var getCommands = function(callback) {
 };
 
 var sendCommand = function(cmd) {
-  http.get('http://matt-htpc.local/?' + cmd, function(res) {});
+  http.get(URL + '?' + cmd, function(res) {});
 };
 
 // TODO: handle repetition
+// TODO: handle errors
 
 module.exports = {
   getCommands: getCommands,

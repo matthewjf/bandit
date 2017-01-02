@@ -161,9 +161,11 @@ check `sudo systemctl status remote.service`
 
 add file `/etc/ethers`:
 ```
-MAC hostname
+<MAC> <hostname>
 ```
 
 ### eventghost webserver
-add `Apple Bonjour for Windows` to handle lookup by hostname
+NOTE: Commands to htpc are handled by an eventghost webserver. The webserver also provides a list of available commands. There's other ways to handle this, but eventghost was already being used to handle IR commands.
+
+add `Apple Bonjour for Windows` to handle multicast DNS (resolve IP by hostname)
 patch `webserver` plugin to send json response for index and set cors headers
