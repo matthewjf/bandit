@@ -29,11 +29,12 @@ router.route('/htpc').get(function(req, res) {
 
 router.route('/htpc/wake').get(function(req, res) {
   exec('wakeonlan htpc');
+  res.status(200).json({status: 'ok'});
 });
 
 router.route('/htpc/:context/:command').get(function(req, res) {
   var ctx = req.params.context, cmd = req.params.command;
-  util.getCommands(function(cmds) {
+  util.getCommands(function(err, cmds) {
     if (cmds && cmds[ctx] && cmds[ctx].indexOf(cmd) !== -1) {
       util.sendCommand(ctx + cmd);
       res.status(200).json({status: 'ok'});
