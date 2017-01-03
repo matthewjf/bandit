@@ -101,7 +101,6 @@ function handleHtpcReq(commands) {
 var htpcReq = new XMLHttpRequest();
 
 htpcReq.onreadystatechange = function() {
-  addHtpcWake();
   if (htpcReq.readyState === 4 ) {
     if (htpcReq.status === 200) {
       handleHtpcReq(JSON.parse(htpcReq.responseText));
@@ -118,3 +117,4 @@ htpcReq.onreadystatechange = function() {
 
 htpcReq.open("GET", "/api/htpc", true);
 htpcReq.send();
+addHtpcWake();
