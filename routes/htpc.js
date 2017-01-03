@@ -7,20 +7,23 @@ var commands = [];
 
 // get all commands
 router.route('/htpc').get(function(req, res) {
-  util.getCommands(function(cmds) {
-
-    for (var ctx in cmds)
-      if (cmds.hasOwnProperty(ctx))
-        cmds[ctx].forEach(function(cmd) {
-          commands.push({
-            context: 'htpc',
-            subcontext: ctx,
-            label: cmd,
-            url: '/api/htpc/' + ctx + '/' + cmd
+  util.getCommands(function(err, cmds) {
+    if (err)
+      res.status(404).json({htpc: ['could not connect to htpc']});
+    else {
+      for (var ctx in cmds)
+        if (cmds.hasOwnProperty(ctx))
+          cmds[ctx].forEach(function(cmd) {
+            commands.push({
+              context: 'htpc',
+              subcontext: ctx,
+              label: cmd,
+              url: '/api/htpc/' + ctx + '/' + cmd
+            });
           });
-        });
 
-    res.status(200).json(cmds);
+      res.status(200).json(cmds);
+    }
   });
 });
 

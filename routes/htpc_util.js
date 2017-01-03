@@ -3,7 +3,7 @@ var htpcCommands;
 var URL = 'http://htpc.local/';
 
 var getCommands = function(callback) {
-  if (htpcCommands) callback(htpcCommands);
+  if (htpcCommands) callback(null, htpcCommands);
   else
     http.get(URL, function(res) {
       var error;
@@ -16,7 +16,7 @@ var getCommands = function(callback) {
       }
       if (error) {
         console.log(error.message);
-        res.resume();
+        callback(error);
         return;
       }
 
@@ -26,13 +26,15 @@ var getCommands = function(callback) {
       res.on('end', function() {
         try {
           htpcCommands = JSON.parse(rawData);
-          callback(htpcCommands);
+          callback(null, htpcCommands);
         } catch (e) {
           console.log(e.message);
+          callback(e);
         }
       });
     }).on('error', function(e) {
       console.log('Got error: ' + e.message);
+      callback(e);
     });
 };
 

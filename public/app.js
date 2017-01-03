@@ -74,7 +74,9 @@ function addHtpcWake() {
   l.appendChild(t);
   l.title = t;
   l.href = '/api/htpc/wake';
-  main.appendChild(l);
+  p = document.createElement('p');
+  p.appendChild(l);
+  main.appendChild(p);
 }
 
 function handleHtpcReq(commands) {
