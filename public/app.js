@@ -80,8 +80,6 @@ function addHtpcWake() {
 }
 
 function handleHtpcReq(commands) {
-  addHtpcWake();
-
   var frag = document.createDocumentFragment();
   Object.keys(commands).forEach(function(ctx) {
     commands[ctx].forEach(function(cmd) {
@@ -103,6 +101,7 @@ function handleHtpcReq(commands) {
 var htpcReq = new XMLHttpRequest();
 
 htpcReq.onreadystatechange = function() {
+  addHtpcWake();
   if (htpcReq.readyState === 4 ) {
     if (htpcReq.status === 200) {
       handleHtpcReq(JSON.parse(htpcReq.responseText));
