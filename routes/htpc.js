@@ -9,7 +9,7 @@ var commands = [];
 router.route('/htpc').get(function(req, res) {
   util.getCommands(function(err, cmds) {
     if (err)
-      res.status(404).json({htpc: ['could not connect to htpc']});
+      res.status(400).json('could not connect to htpc');
     else {
       for (var ctx in cmds)
         if (cmds.hasOwnProperty(ctx))

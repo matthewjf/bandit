@@ -107,9 +107,12 @@ htpcReq.onreadystatechange = function() {
     if (htpcReq.status === 200) {
       handleHtpcReq(JSON.parse(htpcReq.responseText));
     } else if (htpcReq.status === 400) {
-      alert('There was an error 400');
+      p = document.createElement('p');
+      var t = document.createTextNode('could not connect to htpc');
+      p.appendChild(t);
+      main.appendChild(p);
     } else {
-      alert('something else other than 200 was returned');
+      alert('something unexpected was returned');
     }
   }
 };
