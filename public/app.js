@@ -104,13 +104,11 @@ htpcReq.onreadystatechange = function() {
   if (htpcReq.readyState === 4 ) {
     if (htpcReq.status === 200) {
       handleHtpcReq(JSON.parse(htpcReq.responseText));
-    } else if (htpcReq.status === 400) {
+    } else {
       p = document.createElement('p');
       var t = document.createTextNode('could not connect to htpc');
       p.appendChild(t);
       main.appendChild(p);
-    } else {
-      alert('something unexpected was returned');
     }
   }
 };
