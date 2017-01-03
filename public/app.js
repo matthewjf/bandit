@@ -38,7 +38,7 @@ function handleLircReq(remotes) {
         link.appendChild(text);
         link.title = text;
         link.href = '/api/remotes/' + remote + '/' + cmd;
-        var p = document.createElement('p');
+        p = document.createElement('p');
         p.appendChild(link);
         frag.appendChild(p);
       });
@@ -90,7 +90,7 @@ function handleHtpcReq(commands) {
       link.title = text;
       link.href = 'http://htpc.local/?' + ctx + cmd;
       link.href = '/api/htpc/' + ctx + '/' + cmd;
-      var p = document.createElement('p');
+      p = document.createElement('p');
       p.appendChild(link);
       frag.appendChild(p);
     });

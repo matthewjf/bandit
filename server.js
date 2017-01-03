@@ -10,113 +10,36 @@ app.set('port', 3000);
 app.use('/public', express.static('public'));
 
 /**********************
-  LIRC NODE
-**********************/
-var lirc = require('lirc_node');
-lirc.init();
-
-/**********************
   ROUTES
 **********************/
 var router = express.Router();
 
-var execCB = function(res) {
-  return function(err, stdout, stderr) {
-    if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
-    else res.status(200).json({ status: 'ok', stdout: stdout });
-  };
-};
-
-// basic index for testing
+// browser control
 app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname + '/index.html'));
 });
 
+var pi = require('./routes/pi');
+app.use(pi.router);
+
+var remote = require('./routes/remote');
+app.use('/api', remote.router);
+
+var htpc = require('./routes/htpc');
+app.use('/api', htpc.router);
+
 // // list all commands
-router.route('/').get(function(req, res) {
-
-});
-
-/**********************
-  PI
-**********************/
-var exec = require('child_process').exec;
-app.get('/pi/shutdown', function(req, res) {
-  exec('shutdown now', execCB);
-});
-
-app.get('/pi/reboot', function(req, res) {
-  exec('reboot', execCB);
-});
-
-/**********************
-  REMOTES
-**********************/
-
-// list remotes
-router.route('/remotes').get(function(req, res) {
-  if (lirc.remotes) res.status(200).json(lirc.remotes);
-  else res.status(404).json({err: 'no remotes found'});
-});
-
-// list remote commands
-router.route('/remotes/:remote').get(function(req, res) {
-  var remote = lirc.remotes[req.params.remote];
-  if (remote) res.status(200).json(lirc.remotes[req.params.remote]);
-  else res.status(404).json({err: 'not found'});
-});
-
-// send remote command once
-router.route('/remotes/:remote/:command').get(function(req, res) {
-  lirc.irsend.send_once(req.params.remote, req.params.command, execCB(res));
-});
-
-// send remote command repeatedly
-router.route('/remotes/:remote/:command/start').get(function(req, res) {
-  lirc.irsend.send_start(req.params.remote, req.params.command, execCB(res));
-});
-
-// stop remote command sending
-router.route('/remotes/:remote/:command/stop').get(function(req, res) {
-  lirc.irsend.send_stop(req.params.remote, req.params.command, execCB(res));
-});
-
-/**********************
-  HTPC
-**********************/
-
-// initialize htpc commands
-var htpc = require('./htpc');
-
-// get all commands
-router.route('/htpc').get(function(req, res) {
-  htpc.getCommands(function(cmds) {
-    res.status(200).json(cmds);
-  });
-});
-
-router.route('/htpc/wake').get(function(req, res) {
-  exec('wakeonlan htpc', execCB);
-});
-
-router.route('/htpc/:context/:command').get(function(req, res) {
-  var ctx = req.params.context, cmd = req.params.command;
-  htpc.getCommands(function(commands) {
-    if (commands && commands[ctx] && commands[ctx].indexOf(cmd) !== -1) {
-      htpc.sendCommand(ctx + cmd);
-      res.status(200).json({status: 'ok'});
-    } else {
-      res.status(404).json({err: 'not found'});
-    }
+app.get('/api', function(req, res) {
+  res.status(200).json({
+    pi: pi.commands,
+    htpc: htpc.commands,
+    remote: remote.commands
   });
 });
 
 /**********************
   START
 **********************/
-
-// namespace api routes
-app.use('/api', router);
 
 app.listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
