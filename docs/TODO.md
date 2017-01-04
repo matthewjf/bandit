@@ -1,6 +1,5 @@
 # TODO
-
+- Repeat HTPC commands
 - Better error handling
 - Add browser control
-- Refactor routes
-- Refactor command list
+- Add HTPC status
