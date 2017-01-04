@@ -3,7 +3,7 @@ var htpcCommands;
 var URL = 'http://htpc.local/';
 
 var getCommands = function(callback) {
-  if (htpcCommands && callback) callback(null, htpcCommands);
+  if (htpcCommands && callback) callback(null, htpcCommands, true);
   else
     http.get(URL, function(res) {
       var error;

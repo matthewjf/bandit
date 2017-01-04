@@ -3,16 +3,15 @@ var router = express.Router();
 var exec = require('child_process').exec;
 var util = require('./htpc_util');
 
-var HtpcStatus = 0;
+var HTPC_STATUS = 0;
 var commands = [];
 
 // get all commands
 router.route('/htpc').get(function(req, res) {
-  util.getCommands(function(err, cmds) {
-    if (err) {
-      HtpcStatus = 0;
-      res.status(400).json('could not connect to htpc');
-    } else { // cannot update status, commands could be cached
+  util.getCommands(function(err, cmds, cached) {
+    if (err) HTPC_STATUS = 0;
+    if (!cached) { // first request
+      HTPC_STATUS = 1;
       for (var ctx in cmds)
         if (cmds.hasOwnProperty(ctx))
           cmds[ctx].forEach(function(cmd) {
@@ -23,16 +22,21 @@ router.route('/htpc').get(function(req, res) {
               url: '/api/htpc/' + ctx + '/' + cmd
             });
           });
-
-      res.status(200).json(cmds);
     }
+
+    var json = HTPC_STATUS ? cmds : {};
+    res.status(200).json(json);
   });
+});
+
+router.route('/htpc/status').get(function(req, res) {
+  res.status(200).json({status: HTPC_STATUS});
 });
 
 router.route('/htpc/wake').get(function(req, res) {
   exec('wakeonlan htpc', function(err) {
-    if (err) HtpcStatus = 0;
-    else HtpcStatus = 1;
+    if (err) HTPC_STATUS = 0;
+    else HTPC_STATUS = 1;
   });
 
   res.status(200).json({status: 'ok'});
@@ -55,11 +59,11 @@ commands.push({context: 'htpc', label: 'wake', url: '/api/htpc/wake'});
 // PRIVATE API
 // Let HTPC tell bandit when it wakes and sleeps
 router.route('/htpc/awake_').get(function(req, res) {
-  HtpcStatus = 1;
+  HTPC_STATUS = 1;
 });
 
 router.route('/htpc/asleep_').get(function(req, res) {
-  HtpcStatus = 0;
+  HTPC_STATUS = 0;
 });
 
-module.exports = {commands: commands, router: router, HtpcStatus: HtpcStatus};
+module.exports = {commands: commands, router: router, htpcStatus: HTPC_STATUS};
