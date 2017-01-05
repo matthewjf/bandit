@@ -7,7 +7,7 @@ var app = express();
   MIDDLEWARE
 **********************/
 app.set('port', 3000);
-app.use('/public', express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 /**********************
   ROUTES
