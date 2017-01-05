@@ -16,9 +16,9 @@ router.route('/pi/reboot').get(function(req, res) {
   res.status(200).json({status: 'ok'});
 });
 
-var commands = [
-  {context: 'pi', label: 'shutdown', url: '/pi/shutdown'},
-  {context: 'pi', label: 'reboot', url: '/pi/reboot'},
-];
+var commands = {
+  shutdown: null,
+  reboot: null
+};
 
 module.exports = {commands: commands, router: router};

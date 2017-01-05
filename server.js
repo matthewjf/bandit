@@ -32,8 +32,10 @@ app.use('/api', htpc.router);
 app.get('/api', function(req, res) {
   res.status(200).json({
     pi: pi.commands,
-    htpc: htpc.commands,
-    remote: remote.commands
+    api: {
+      htpc: htpc.commands,
+      remotes: remote.commands
+    }
   });
 });
 

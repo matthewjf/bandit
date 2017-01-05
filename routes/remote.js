@@ -44,17 +44,6 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
 });
 
 // remote: [{label, url}]
-var commands = [];
-if (lirc.remotes)
-  for (var remote in lirc.remotes)
-    if (lirc.remotes.hasOwnProperty(remote))
-      lirc.remotes[remote].forEach(function(cmd) {
-        commands.push({
-          context: 'remote',
-          subcontext: remote,
-          label: cmd,
-          url: '/api/remotes/' + remote + '/' + cmd
-        });
-      });
+var commands = lirc.remotes || {};
 
 module.exports = {commands: commands, router: router};

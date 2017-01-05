@@ -42,7 +42,15 @@ var sendCommand = function(cmd) {
   http.get(URL + '?' + cmd, function(res) {});
 };
 
-// TODO: handle repetition
+var sendStartCommand = function(cmd) {
+  // does not return a response
+  http.get(URL + '?' + cmd + '&withoutRelease', function(res) {});
+};
+
+var sendStopCommand = function() {
+  http.get(URL + '?' + 'ButtonReleased', function(res) {});
+};
+
 // TODO: handle errors
 
 module.exports = {
