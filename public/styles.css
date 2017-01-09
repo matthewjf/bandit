@@ -127,6 +127,7 @@ body {
 .row {
   width: 100vw;
   display: -webkit-flex;
+  display: -webkit-box;
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
@@ -142,6 +143,7 @@ button {
   flex: 0 0 25%;
   background-color: transparent;
   display: -webkit-flex;
+  display: -webkit-box;
   display: flex;
   -webkit-justify-content: center;
   justify-content: center;
