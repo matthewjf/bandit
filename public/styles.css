@@ -157,6 +157,8 @@ button .material-icons {
   vertical-align: middle;
   height: 100%;
   line-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .material-icons {
