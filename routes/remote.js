@@ -44,6 +44,6 @@ router.route('/remotes/:remote/:command/stop').get(function(req, res) {
 });
 
 // remote: [{label, url}]
-var commands = lirc.remotes || {};
+var commands = lirc.remotes;
 
 module.exports = {commands: commands, router: router};

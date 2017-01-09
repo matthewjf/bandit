@@ -22327,6 +22327,8 @@
 	
 	var _button2 = _interopRequireDefault(_button);
 	
+	var _util = __webpack_require__(/*! ./util */ 187);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22334,14 +22336,6 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-	
-	function kodiStart(cmd) {
-	  $.get('/api/htpc/kodi/' + cmd + '/start');
-	}
-	
-	function kodiClick(cmd) {
-	  $.get('/api/htpc/kodi/' + cmd);
-	}
 	
 	var Navigation = function (_Base) {
 	  _inherits(Navigation, _Base);
@@ -22353,51 +22347,6 @@
 	  }
 	
 	  _createClass(Navigation, [{
-	    key: 'handleSelect',
-	    value: function handleSelect() {
-	      $.get('/api/htpc/kodi/select/start');
-	    }
-	  }, {
-	    key: 'handleUp',
-	    value: function handleUp() {
-	      kodiStart('up');
-	    }
-	  }, {
-	    key: 'handleDown',
-	    value: function handleDown() {
-	      kodiStart('down');
-	    }
-	  }, {
-	    key: 'handleLeft',
-	    value: function handleLeft() {
-	      kodiStart('left');
-	    }
-	  }, {
-	    key: 'handleRight',
-	    value: function handleRight() {
-	      kodiStart('right');
-	    }
-	  }, {
-	    key: 'handleContext',
-	    value: function handleContext() {
-	      kodiClick('context_menu');
-	    }
-	  }, {
-	    key: 'handlePrev',
-	    value: function handlePrev() {
-	      kodiClick('previous');
-	    }
-	  }, {
-	    key: 'handleInfo',
-	    value: function handleInfo() {
-	      kodiClick('info');
-	    }
-	  }, {
-	    key: 'handleReturn',
-	    value: function handleReturn() {
-	      kodiClick('return');
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -22406,23 +22355,23 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handleContext, iconClass: 'grey-6 small', icon: 'more_vert' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleUp, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_up' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handlePrev, iconClass: 'grey-6 small', icon: 'keyboard_backspace' })
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('context_menu'), iconClass: 'grey-6 small', icon: 'more_vert' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('up'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_up' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('previous'), iconClass: 'grey-6 small', icon: 'keyboard_backspace' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleLeft, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_left' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleSelect, up: this.stop, iconClass: 'grey-6', icon: 'radio_button_unchecked' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleRight, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_right' })
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('left'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_left' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('select'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'radio_button_unchecked' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('right'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_right' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handleInfo, iconClass: 'grey-6 small', icon: 'info_outline' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleDown, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_down' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handleReturn, iconClass: 'grey-6 small', icon: 'keyboard_return' })
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('info'), iconClass: 'grey-6 small', icon: 'info_outline' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('down'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_down' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('parent_dir'), iconClass: 'grey-6 small', icon: 'keyboard_return' })
 	        )
 	      );
 	    }
@@ -22460,6 +22409,8 @@
 	
 	var _button2 = _interopRequireDefault(_button);
 	
+	var _util = __webpack_require__(/*! ./util */ 187);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22486,64 +22437,16 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'b-grey-2' },
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'skip_previous'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'b-grey-2' },
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'green material-icons' },
-	              'play_arrow'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'b-grey-2' },
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'skip_next'
-	            )
-	          )
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'skip_previous', down: (0, _util.kodiStart)('small_skip_bck'), up: (0, _util.kodiStop)() }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'green', icon: 'play_arrow', click: (0, _util.kodiClick)('play') }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'skip_next', down: (0, _util.kodiStart)('small_skip_fwd'), up: (0, _util.kodiStop)() })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'b-grey-2' },
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'fast_rewind'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'b-grey-2' },
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'red material-icons' },
-	              'stop'
-	            )
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'b-grey-2' },
-	            _react2.default.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'fast_forward'
-	            )
-	          )
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'fast_rewind', down: (0, _util.kodiStart)('big_skip_bck'), up: (0, _util.kodiStop)() }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'red', icon: 'stop', click: (0, _util.kodiClick)('stop') }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'fast_forward', down: (0, _util.kodiStart)('big_skip_fwd'), up: (0, _util.kodiStop)() })
 	        )
 	      );
 	    }
@@ -22599,29 +22502,23 @@
 	  }
 	
 	  _createClass(Volume, [{
+	    key: 'volumeDown',
+	    value: function volumeDown() {
+	      $.get('/api/remotes/receiver/KEY_VOLUMEDOWN/start');
+	    }
+	  }, {
+	    key: 'volumeUp',
+	    value: function volumeUp() {
+	      $.get('/api/remotes/receiver/KEY_VOLUMEDOWN/stop');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'volume', className: 'row' },
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'b-grey-4 grey-8' },
-	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'volume_down'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'b-grey-4 grey-8' },
-	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'volume_up'
-	          )
-	        )
+	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', icon: 'volume_down' }),
+	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', icon: 'volume_up' })
 	      );
 	    }
 	  }]);
@@ -22676,6 +22573,21 @@
 	  }
 	
 	  _createClass(Kodi, [{
+	    key: 'handleKodi',
+	    value: function handleKodi() {
+	      // TODO: add command to htpc
+	    }
+	  }, {
+	    key: 'handleSubtitles',
+	    value: function handleSubtitles() {
+	      $.get('/api/htpc/kodi/subtitles');
+	    }
+	  }, {
+	    key: 'handleUpdate',
+	    value: function handleUpdate() {
+	      $.get('/api/htpc/kodi/update_videos');
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -22683,27 +22595,11 @@
 	        { id: 'kodi', className: 'row' },
 	        _react2.default.createElement(
 	          'button',
-	          { className: 'b-grey-2 grey-8' },
+	          { onClick: this.handleKodi, className: 'b-grey-2 grey-8' },
 	          _react2.default.createElement('img', { src: '/kodi-logo.png' })
 	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'b-grey-2 grey-8' },
-	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'chat_bubble_outline'
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { className: 'b-grey-2 grey-8' },
-	          _react2.default.createElement(
-	            'i',
-	            { className: 'material-icons' },
-	            'file_upload'
-	          )
-	        )
+	        _react2.default.createElement(_button2.default, { click: this.handleSubtitles, buttonClass: 'b-grey-2 grey-8', icon: 'chat_bubble_outline' }),
+	        _react2.default.createElement(_button2.default, { click: this.handleUpdate, buttonClass: 'b-grey-2 grey-8', icon: 'file_upload' })
 	      );
 	    }
 	  }]);
@@ -22872,17 +22768,45 @@
 	    value: function componentWillReceiveProps(props) {
 	      this.setState({ commands: props.commands });
 	    }
-	  }, {
-	    key: 'stop',
-	    value: function stop() {
-	      $.get('/api/htpc/stop');
-	    }
 	  }]);
 	
 	  return Base;
 	}(_react2.default.Component);
 	
 	exports.default = Base;
+
+/***/ },
+/* 187 */
+/*!************************!*\
+  !*** ./client/util.js ***!
+  \************************/
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.kodiStart = kodiStart;
+	exports.kodiStop = kodiStop;
+	exports.kodiClick = kodiClick;
+	function kodiStart(cmd) {
+	  return function () {
+	    $.get('/api/htpc/kodi/' + cmd + '/start');
+	  };
+	}
+	
+	function kodiStop(cmd) {
+	  return function () {
+	    $.get('/api/htpc/stop');
+	  };
+	}
+	
+	function kodiClick(cmd) {
+	  return function () {
+	    $.get('/api/htpc/kodi/' + cmd);
+	  };
+	}
 
 /***/ }
 /******/ ]);

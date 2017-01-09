@@ -1,6 +1,7 @@
 import React from 'react';
 import Base from './base';
 import Button from './button';
+import {kodiStart, kodiClick, kodiStop} from './util';
 
 class Media extends Base {
 
@@ -9,15 +10,15 @@ class Media extends Base {
       <div id='media'>
 
         <div className='row' >
-          <button className='b-grey-2'><i className="grey-6 material-icons">skip_previous</i></button>
-          <button className='b-grey-2'><i className="green material-icons">play_arrow</i></button>
-          <button className='b-grey-2'><i className="grey-6 material-icons">skip_next</i></button>
+          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='skip_previous' down={kodiStart('small_skip_bck')} up={kodiStop()}/>
+          <Button buttonClass='b-grey-2' iconClass="green" icon='play_arrow' click={kodiClick('play')}/>
+          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='skip_next' down={kodiStart('small_skip_fwd')} up={kodiStop()}/>
         </div>
 
         <div className='row' >
-          <button className='b-grey-2'><i className="grey-6 material-icons">fast_rewind</i></button>
-          <button className='b-grey-2'><i className="red material-icons">stop</i></button>
-          <button className='b-grey-2'><i className="grey-6 material-icons">fast_forward</i></button>
+          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='fast_rewind' down={kodiStart('big_skip_bck')} up={kodiStop()}/>
+          <Button buttonClass='b-grey-2' iconClass="red" icon='stop' click={kodiClick('stop')}/>
+          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='fast_forward' down={kodiStart('big_skip_fwd')} up={kodiStop()}/>
         </div>
 
       </div>

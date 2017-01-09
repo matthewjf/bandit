@@ -129,6 +129,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
 }
 
 button {
@@ -141,6 +144,9 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
+  display: -webkit-flex;
+  -webkit-align-items: center;
+  -webkit-justify-content: center;
   margin: 1.2vw;
 }
 
