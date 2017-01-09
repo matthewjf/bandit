@@ -22555,6 +22555,8 @@
 	
 	var _button2 = _interopRequireDefault(_button);
 	
+	var _util = __webpack_require__(/*! ./util */ 187);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22575,17 +22577,7 @@
 	  _createClass(Kodi, [{
 	    key: 'handleKodi',
 	    value: function handleKodi() {
-	      // TODO: add command to htpc
-	    }
-	  }, {
-	    key: 'handleSubtitles',
-	    value: function handleSubtitles() {
-	      $.get('/api/htpc/kodi/subtitles');
-	    }
-	  }, {
-	    key: 'handleUpdate',
-	    value: function handleUpdate() {
-	      $.get('/api/htpc/kodi/update_videos');
+	      $.get('/api/htpc/htpc/toggle_kodi');
 	    }
 	  }, {
 	    key: 'render',
@@ -22598,8 +22590,8 @@
 	          { onClick: this.handleKodi, className: 'b-grey-2 grey-8' },
 	          _react2.default.createElement('img', { src: '/kodi-logo.png' })
 	        ),
-	        _react2.default.createElement(_button2.default, { click: this.handleSubtitles, buttonClass: 'b-grey-2 grey-8', icon: 'chat_bubble_outline' }),
-	        _react2.default.createElement(_button2.default, { click: this.handleUpdate, buttonClass: 'b-grey-2 grey-8', icon: 'file_upload' })
+	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('subtitles'), buttonClass: 'b-grey-2 grey-8', icon: 'chat_bubble_outline' }),
+	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('update_videos'), buttonClass: 'b-grey-2 grey-8', icon: 'file_upload' })
 	      );
 	    }
 	  }]);

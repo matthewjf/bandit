@@ -152,6 +152,7 @@ button {
   -webkit-align-items: center;
   align-items: center;
   margin: 1.2vw;
+  text-align: center;
 }
 
 button .material-icons {
