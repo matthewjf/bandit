@@ -11,9 +11,9 @@ class Kodi extends Base {
   render() {
     return (
       <div id='kodi' className='row' >
-        <button onClick={this.handleKodi} className='b-grey-2 grey-8'><img src='/kodi-logo.png'></img></button>
-        <Button click={kodiClick('subtitles')} buttonClass='b-grey-2 grey-8' icon='chat_bubble_outline'/>
-        <Button click={kodiClick('update_videos')} buttonClass='b-grey-2 grey-8' icon='file_upload'/>
+        <button onClick={this.handleKodi} className='grey-8'><img src='/kodi-logo.png'></img></button>
+        <Button click={kodiClick('subtitles')} buttonClass='grey-8' icon='chat_bubble_outline'/>
+        <Button click={kodiClick('update_videos')} buttonClass='grey-8' icon='file_upload'/>
       </div>
     );
   }

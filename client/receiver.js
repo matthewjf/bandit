@@ -18,9 +18,9 @@ class Receiver extends Base {
   render() {
     return (
       <div id='receiver' className='row' >
-        <Button buttonClass='b-grey-4 grey-8' text='PC' click={this.pcClick}/>
-        <Button buttonClass='b-grey-4 grey-8' text='PS4' click={this.psClick}/>
-        <Button buttonClass='b-grey-4 grey-8' text='CAST' click={this.castClick}/>
+        <Button buttonClass='grey-8' text='PC' click={this.pcClick}/>
+        <Button buttonClass='grey-8' text='PS4' click={this.psClick}/>
+        <Button buttonClass='grey-8' text='CAST' click={this.castClick}/>
       </div>
     );
   }

@@ -14,8 +14,8 @@ class Volume extends Base {
   render() {
     return (
       <div id='volume' className='row' >
-        <Button buttonClass='b-grey-4 grey-8' icon='volume_down' />
-        <Button buttonClass='b-grey-4 grey-8' icon='volume_up' />
+        <Button buttonClass='grey-8' icon='volume_down' />
+        <Button buttonClass='grey-8' icon='volume_up' />
       </div>
     );
   }

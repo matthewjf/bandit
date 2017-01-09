@@ -10,15 +10,15 @@ class Media extends Base {
       <div id='media'>
 
         <div className='row' >
-          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='skip_previous' down={kodiStart('small_skip_bck')} up={kodiStop()}/>
-          <Button buttonClass='b-grey-2' iconClass="green" icon='play_arrow' click={kodiClick('play')}/>
-          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='skip_next' down={kodiStart('small_skip_fwd')} up={kodiStop()}/>
+          <Button iconClass="grey-6" icon='skip_previous' down={kodiStart('small_skip_bck')} up={kodiStop()}/>
+          <Button iconClass="green" icon='play_arrow' click={kodiClick('play')}/>
+          <Button iconClass="grey-6" icon='skip_next' down={kodiStart('small_skip_fwd')} up={kodiStop()}/>
         </div>
 
         <div className='row' >
-          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='fast_rewind' down={kodiStart('big_skip_bck')} up={kodiStop()}/>
-          <Button buttonClass='b-grey-2' iconClass="red" icon='stop' click={kodiClick('stop')}/>
-          <Button buttonClass='b-grey-2' iconClass="grey-6" icon='fast_forward' down={kodiStart('big_skip_fwd')} up={kodiStop()}/>
+          <Button iconClass="grey-6" icon='fast_rewind' down={kodiStart('big_skip_bck')} up={kodiStop()}/>
+          <Button iconClass="red" icon='stop' click={kodiClick('stop')}/>
+          <Button iconClass="grey-6" icon='fast_forward' down={kodiStart('big_skip_fwd')} up={kodiStop()}/>
         </div>
 
       </div>

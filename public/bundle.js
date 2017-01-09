@@ -22288,9 +22288,9 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'receiver', className: 'row' },
-	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'PC', click: this.pcClick }),
-	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'PS4', click: this.psClick }),
-	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'CAST', click: this.castClick })
+	        _react2.default.createElement(_button2.default, { buttonClass: 'grey-8', text: 'PC', click: this.pcClick }),
+	        _react2.default.createElement(_button2.default, { buttonClass: 'grey-8', text: 'PS4', click: this.psClick }),
+	        _react2.default.createElement(_button2.default, { buttonClass: 'grey-8', text: 'CAST', click: this.castClick })
 	      );
 	    }
 	  }]);
@@ -22355,23 +22355,23 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('context_menu'), iconClass: 'grey-6 small', icon: 'more_vert' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('up'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_up' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('previous'), iconClass: 'grey-6 small', icon: 'keyboard_backspace' })
+	          _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('context_menu'), iconClass: 'grey-6 small', icon: 'more_vert' }),
+	          _react2.default.createElement(_button2.default, { down: (0, _util.kodiStart)('up'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_up' }),
+	          _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('previous'), iconClass: 'grey-6 small', icon: 'keyboard_backspace' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('left'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_left' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('select'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'radio_button_unchecked' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('right'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_right' })
+	          _react2.default.createElement(_button2.default, { down: (0, _util.kodiStart)('left'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_left' }),
+	          _react2.default.createElement(_button2.default, { down: (0, _util.kodiStart)('select'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'radio_button_unchecked' }),
+	          _react2.default.createElement(_button2.default, { down: (0, _util.kodiStart)('right'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_right' })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('info'), iconClass: 'grey-6 small', icon: 'info_outline' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: (0, _util.kodiStart)('down'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_down' }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: (0, _util.kodiClick)('parent_dir'), iconClass: 'grey-6 small', icon: 'keyboard_return' })
+	          _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('info'), iconClass: 'grey-6 small', icon: 'info_outline' }),
+	          _react2.default.createElement(_button2.default, { down: (0, _util.kodiStart)('down'), up: (0, _util.kodiStop)(), iconClass: 'grey-6', icon: 'keyboard_arrow_down' }),
+	          _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('parent_dir'), iconClass: 'grey-6 small', icon: 'keyboard_return' })
 	        )
 	      );
 	    }
@@ -22437,16 +22437,16 @@
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'skip_previous', down: (0, _util.kodiStart)('small_skip_bck'), up: (0, _util.kodiStop)() }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'green', icon: 'play_arrow', click: (0, _util.kodiClick)('play') }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'skip_next', down: (0, _util.kodiStart)('small_skip_fwd'), up: (0, _util.kodiStop)() })
+	          _react2.default.createElement(_button2.default, { iconClass: 'grey-6', icon: 'skip_previous', down: (0, _util.kodiStart)('small_skip_bck'), up: (0, _util.kodiStop)() }),
+	          _react2.default.createElement(_button2.default, { iconClass: 'green', icon: 'play_arrow', click: (0, _util.kodiClick)('play') }),
+	          _react2.default.createElement(_button2.default, { iconClass: 'grey-6', icon: 'skip_next', down: (0, _util.kodiStart)('small_skip_fwd'), up: (0, _util.kodiStop)() })
 	        ),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'fast_rewind', down: (0, _util.kodiStart)('big_skip_bck'), up: (0, _util.kodiStop)() }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'red', icon: 'stop', click: (0, _util.kodiClick)('stop') }),
-	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', iconClass: 'grey-6', icon: 'fast_forward', down: (0, _util.kodiStart)('big_skip_fwd'), up: (0, _util.kodiStop)() })
+	          _react2.default.createElement(_button2.default, { iconClass: 'grey-6', icon: 'fast_rewind', down: (0, _util.kodiStart)('big_skip_bck'), up: (0, _util.kodiStop)() }),
+	          _react2.default.createElement(_button2.default, { iconClass: 'red', icon: 'stop', click: (0, _util.kodiClick)('stop') }),
+	          _react2.default.createElement(_button2.default, { iconClass: 'grey-6', icon: 'fast_forward', down: (0, _util.kodiStart)('big_skip_fwd'), up: (0, _util.kodiStop)() })
 	        )
 	      );
 	    }
@@ -22517,8 +22517,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'volume', className: 'row' },
-	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', icon: 'volume_down' }),
-	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', icon: 'volume_up' })
+	        _react2.default.createElement(_button2.default, { buttonClass: 'grey-8', icon: 'volume_down' }),
+	        _react2.default.createElement(_button2.default, { buttonClass: 'grey-8', icon: 'volume_up' })
 	      );
 	    }
 	  }]);
@@ -22587,11 +22587,11 @@
 	        { id: 'kodi', className: 'row' },
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.handleKodi, className: 'b-grey-2 grey-8' },
+	          { onClick: this.handleKodi, className: 'grey-8' },
 	          _react2.default.createElement('img', { src: '/kodi-logo.png' })
 	        ),
-	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('subtitles'), buttonClass: 'b-grey-2 grey-8', icon: 'chat_bubble_outline' }),
-	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('update_videos'), buttonClass: 'b-grey-2 grey-8', icon: 'file_upload' })
+	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('subtitles'), buttonClass: 'grey-8', icon: 'chat_bubble_outline' }),
+	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('update_videos'), buttonClass: 'grey-8', icon: 'file_upload' })
 	      );
 	    }
 	  }]);
