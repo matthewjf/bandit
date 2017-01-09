@@ -4,6 +4,8 @@
 * {
   color: #212121;
   font-size: 14px;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 *:focus {
