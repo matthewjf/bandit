@@ -22159,6 +22159,10 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _base = __webpack_require__(/*! ./base */ 186);
 	
 	var _base2 = _interopRequireDefault(_base);
@@ -22203,13 +22207,13 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { id: 'power', className: 'row b-grey-0' },
-	        React.createElement(_button2.default, { id: 'pc_power', iconClass: 'lblue', icon: 'account_box', click: this.pcClick }),
-	        React.createElement(_button2.default, { id: 'tv_power', iconClass: 'teal', icon: 'tv', click: this.tvClick }),
-	        React.createElement(_button2.default, { id: 'rec_power', iconClass: 'amber', icon: 'surround_sound', click: this.recClick }),
-	        React.createElement(_button2.default, { id: 'more_opts', iconClass: 'grey-4', icon: 'settings_applications' })
+	        _react2.default.createElement(_button2.default, { id: 'pc_power', iconClass: 'lblue', icon: 'account_box', click: this.pcClick }),
+	        _react2.default.createElement(_button2.default, { id: 'tv_power', iconClass: 'teal', icon: 'tv', click: this.tvClick }),
+	        _react2.default.createElement(_button2.default, { id: 'rec_power', iconClass: 'amber', icon: 'surround_sound', click: this.recClick }),
+	        _react2.default.createElement(_button2.default, { id: 'more_opts', iconClass: 'grey-4', icon: 'settings_applications' })
 	      );
 	    }
 	  }]);
@@ -22233,6 +22237,10 @@
 	});
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
 	
 	var _base = __webpack_require__(/*! ./base */ 186);
 	
@@ -22277,12 +22285,12 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { id: 'receiver', className: 'row' },
-	        React.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'PC', click: this.pcClick }),
-	        React.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'PS4', click: this.psClick }),
-	        React.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'CAST', click: this.castClick })
+	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'PC', click: this.pcClick }),
+	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'PS4', click: this.psClick }),
+	        _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-4 grey-8', text: 'CAST', click: this.castClick })
 	      );
 	    }
 	  }]);
@@ -22307,9 +22315,17 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _base = __webpack_require__(/*! ./base */ 186);
 	
 	var _base2 = _interopRequireDefault(_base);
+	
+	var _button = __webpack_require__(/*! ./button */ 185);
+	
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22318,6 +22334,14 @@
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	function kodiStart(cmd) {
+	  $.get('/api/htpc/kodi/' + cmd + '/start');
+	}
+	
+	function kodiClick(cmd) {
+	  $.get('/api/htpc/kodi/' + cmd);
+	}
 	
 	var Navigation = function (_Base) {
 	  _inherits(Navigation, _Base);
@@ -22329,150 +22353,76 @@
 	  }
 	
 	  _createClass(Navigation, [{
-	    key: 'kodiStart',
-	    value: function kodiStart(cmd) {
-	      $.get('/api/htpc/kodi/' + cmd + '/start');
+	    key: 'handleSelect',
+	    value: function handleSelect() {
+	      $.get('/api/htpc/kodi/select/start');
 	    }
 	  }, {
-	    key: 'kodiClick',
-	    value: function kodiClick(cmd) {
-	      $.get('/api/htpc/kodi/' + cmd);
+	    key: 'handleUp',
+	    value: function handleUp() {
+	      kodiStart('up');
 	    }
 	  }, {
-	    key: 'select',
-	    value: function select() {
-	      this.kodiStart('select');
+	    key: 'handleDown',
+	    value: function handleDown() {
+	      kodiStart('down');
 	    }
 	  }, {
-	    key: 'up',
-	    value: function up() {
-	      this.kodiStart('up');
+	    key: 'handleLeft',
+	    value: function handleLeft() {
+	      kodiStart('left');
 	    }
 	  }, {
-	    key: 'down',
-	    value: function down() {
-	      this.kodiStart('down');
+	    key: 'handleRight',
+	    value: function handleRight() {
+	      kodiStart('right');
 	    }
 	  }, {
-	    key: 'left',
-	    value: function left() {
-	      this.kodiStart('left');
+	    key: 'handleContext',
+	    value: function handleContext() {
+	      kodiClick('context_menu');
 	    }
 	  }, {
-	    key: 'right',
-	    value: function right() {
-	      this.kodiStart('right');
+	    key: 'handlePrev',
+	    value: function handlePrev() {
+	      kodiClick('previous');
 	    }
 	  }, {
-	    key: 'context',
-	    value: function context() {}
+	    key: 'handleInfo',
+	    value: function handleInfo() {
+	      kodiClick('info');
+	    }
 	  }, {
-	    key: 'prev',
-	    value: function prev() {}
-	  }, {
-	    key: 'info',
-	    value: function info() {}
-	  }, {
-	    key: 'return',
-	    value: function _return() {}
+	    key: 'handleReturn',
+	    value: function handleReturn() {
+	      kodiClick('return');
+	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { id: 'navigation' },
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-2', click: this.context },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons small' },
-	              'more_vert'
-	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-0', down: this.up, up: this.stop },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'keyboard_arrow_up'
-	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-2', click: this.prev },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons small' },
-	              'keyboard_backspace'
-	            )
-	          )
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handleContext, iconClass: 'grey-6 small', icon: 'more_vert' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleUp, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_up' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handlePrev, iconClass: 'grey-6 small', icon: 'keyboard_backspace' })
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-0', down: this.left, up: this.stop },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'keyboard_arrow_left'
-	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-0', down: this.select, up: this.stop },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'radio_button_unchecked'
-	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-0', down: this.right, up: this.stop },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'keyboard_arrow_right'
-	            )
-	          )
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleLeft, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_left' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleSelect, up: this.stop, iconClass: 'grey-6', icon: 'radio_button_unchecked' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleRight, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_right' })
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-2', click: this.info },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons small' },
-	              'info_outline'
-	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-0', down: this.down, up: this.stop },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons' },
-	              'keyboard_arrow_down'
-	            )
-	          ),
-	          React.createElement(
-	            'button',
-	            { className: 'b-grey-2', click: this.return },
-	            React.createElement(
-	              'i',
-	              { className: 'grey-6 material-icons small' },
-	              'keyboard_return'
-	            )
-	          )
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handleInfo, iconClass: 'grey-6 small', icon: 'info_outline' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-0', down: this.handleDown, up: this.stop, iconClass: 'grey-6', icon: 'keyboard_arrow_down' }),
+	          _react2.default.createElement(_button2.default, { buttonClass: 'b-grey-2', click: this.handleReturn, iconClass: 'grey-6 small', icon: 'keyboard_return' })
 	        )
 	      );
 	    }
@@ -22498,9 +22448,17 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _base = __webpack_require__(/*! ./base */ 186);
 	
 	var _base2 = _interopRequireDefault(_base);
+	
+	var _button = __webpack_require__(/*! ./button */ 185);
+	
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22522,65 +22480,65 @@
 	  _createClass(Media, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { id: 'media' },
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'button',
 	            { className: 'b-grey-2' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'i',
 	              { className: 'grey-6 material-icons' },
 	              'skip_previous'
 	            )
 	          ),
-	          React.createElement(
+	          _react2.default.createElement(
 	            'button',
 	            { className: 'b-grey-2' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'i',
 	              { className: 'green material-icons' },
 	              'play_arrow'
 	            )
 	          ),
-	          React.createElement(
+	          _react2.default.createElement(
 	            'button',
 	            { className: 'b-grey-2' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'i',
 	              { className: 'grey-6 material-icons' },
 	              'skip_next'
 	            )
 	          )
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'button',
 	            { className: 'b-grey-2' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'i',
 	              { className: 'grey-6 material-icons' },
 	              'fast_rewind'
 	            )
 	          ),
-	          React.createElement(
+	          _react2.default.createElement(
 	            'button',
 	            { className: 'b-grey-2' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'i',
 	              { className: 'red material-icons' },
 	              'stop'
 	            )
 	          ),
-	          React.createElement(
+	          _react2.default.createElement(
 	            'button',
 	            { className: 'b-grey-2' },
-	            React.createElement(
+	            _react2.default.createElement(
 	              'i',
 	              { className: 'grey-6 material-icons' },
 	              'fast_forward'
@@ -22611,9 +22569,17 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _base = __webpack_require__(/*! ./base */ 186);
 	
 	var _base2 = _interopRequireDefault(_base);
+	
+	var _button = __webpack_require__(/*! ./button */ 185);
+	
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22635,22 +22601,22 @@
 	  _createClass(Volume, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { id: 'volume', className: 'row' },
-	        React.createElement(
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'b-grey-4 grey-8' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons' },
 	            'volume_down'
 	          )
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'b-grey-4 grey-8' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons' },
 	            'volume_up'
@@ -22680,9 +22646,17 @@
 	
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
 	var _base = __webpack_require__(/*! ./base */ 186);
 	
 	var _base2 = _interopRequireDefault(_base);
+	
+	var _button = __webpack_require__(/*! ./button */ 185);
+	
+	var _button2 = _interopRequireDefault(_button);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22704,27 +22678,27 @@
 	  _createClass(Kodi, [{
 	    key: 'render',
 	    value: function render() {
-	      return React.createElement(
+	      return _react2.default.createElement(
 	        'div',
 	        { id: 'kodi', className: 'row' },
-	        React.createElement(
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'b-grey-2 grey-8' },
-	          React.createElement('img', { src: '/kodi-logo.png' })
+	          _react2.default.createElement('img', { src: '/kodi-logo.png' })
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'b-grey-2 grey-8' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons' },
 	            'chat_bubble_outline'
 	          )
 	        ),
-	        React.createElement(
+	        _react2.default.createElement(
 	          'button',
 	          { className: 'b-grey-2 grey-8' },
-	          React.createElement(
+	          _react2.default.createElement(
 	            'i',
 	            { className: 'material-icons' },
 	            'file_upload'
@@ -22900,8 +22874,8 @@
 	    }
 	  }, {
 	    key: 'stop',
-	    value: function stop(cb) {
-	      $.get('/api/htpc/stop', cb);
+	    value: function stop() {
+	      $.get('/api/htpc/stop');
 	    }
 	  }]);
 	

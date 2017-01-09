@@ -1,48 +1,52 @@
+import React from 'react';
 import Base from './base';
+import Button from './button';
+
+function kodiStart(cmd) {
+  $.get(`/api/htpc/kodi/${cmd}/start`);
+}
+
+function kodiClick(cmd) {
+  $.get(`/api/htpc/kodi/${cmd}`);
+}
+
 
 class Navigation extends Base {
-  kodiStart(cmd) {
-    $.get(`/api/htpc/kodi/${cmd}/start`);
+
+  handleSelect() {
+    $.get('/api/htpc/kodi/select/start');
   }
 
-  kodiClick(cmd) {
-    $.get(`/api/htpc/kodi/${cmd}`);
+  handleUp() {
+    kodiStart('up');
   }
 
-  select() {
-    this.kodiStart('select');
+  handleDown() {
+    kodiStart('down');
   }
 
-  up() {
-    this.kodiStart('up');
+  handleLeft() {
+    kodiStart('left');
   }
 
-  down() {
-    this.kodiStart('down');
+  handleRight() {
+    kodiStart('right');
   }
 
-  left() {
-    this.kodiStart('left');
+  handleContext() {
+    kodiClick('context_menu');
   }
 
-  right() {
-    this.kodiStart('right');
+  handlePrev() {
+    kodiClick('previous');
   }
 
-  context() {
-    
+  handleInfo() {
+    kodiClick('info');
   }
 
-  prev() {
-
-  }
-
-  info() {
-
-  }
-
-  return() {
-
+  handleReturn() {
+    kodiClick('return');
   }
 
   render() {
@@ -50,21 +54,21 @@ class Navigation extends Base {
       <div id='navigation'>
 
         <div className='row' >
-          <button className='b-grey-2' click={this.context}><i className="grey-6 material-icons small">more_vert</i></button>
-          <button className='b-grey-0' down={this.up} up={this.stop}><i className="grey-6 material-icons">keyboard_arrow_up</i></button>
-          <button className='b-grey-2' click={this.prev}><i className="grey-6 material-icons small">keyboard_backspace</i></button>
+          <Button buttonClass='b-grey-2' click={this.handleContext} iconClass="grey-6 small" icon='more_vert' />
+          <Button buttonClass='b-grey-0' down={this.handleUp} up={this.stop} iconClass="grey-6" icon='keyboard_arrow_up' />
+          <Button buttonClass='b-grey-2' click={this.handlePrev} iconClass="grey-6 small" icon='keyboard_backspace' />
         </div>
 
         <div className='row' >
-          <button className='b-grey-0' down={this.left} up={this.stop}><i className="grey-6 material-icons">keyboard_arrow_left</i></button>
-          <button className='b-grey-0' down={this.select} up={this.stop}><i className="grey-6 material-icons">radio_button_unchecked</i></button>
-          <button className='b-grey-0' down={this.right} up={this.stop}><i className="grey-6 material-icons">keyboard_arrow_right</i></button>
+          <Button buttonClass='b-grey-0' down={this.handleLeft} up={this.stop} iconClass="grey-6" icon='keyboard_arrow_left' />
+          <Button buttonClass='b-grey-0' down={this.handleSelect} up={this.stop} iconClass="grey-6" icon='radio_button_unchecked' />
+          <Button buttonClass='b-grey-0' down={this.handleRight} up={this.stop} iconClass="grey-6" icon='keyboard_arrow_right' />
         </div>
 
         <div className='row' >
-          <button className='b-grey-2' click={this.info}><i className="grey-6 material-icons small">info_outline</i></button>
-          <button className='b-grey-0' down={this.down} up={this.stop}><i className="grey-6 material-icons">keyboard_arrow_down</i></button>
-          <button className='b-grey-2' click={this.return}><i className="grey-6 material-icons small">keyboard_return</i></button>
+          <Button buttonClass='b-grey-2' click={this.handleInfo} iconClass="grey-6 small" icon='info_outline' />
+          <Button buttonClass='b-grey-0' down={this.handleDown} up={this.stop} iconClass="grey-6" icon='keyboard_arrow_down' />
+          <Button buttonClass='b-grey-2' click={this.handleReturn} iconClass="grey-6 small" icon='keyboard_return' />
         </div>
 
       </div>

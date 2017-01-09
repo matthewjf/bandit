@@ -55,5 +55,7 @@ var sendStopCommand = function() {
 
 module.exports = {
   getCommands: getCommands,
-  sendCommand: sendCommand
+  sendCommand: sendCommand,
+  sendStartCommand: sendStartCommand,
+  sendStopCommand: sendStopCommand
 };

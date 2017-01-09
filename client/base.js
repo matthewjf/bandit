@@ -5,8 +5,8 @@ class Base extends React.Component {
     this.setState({commands: props.commands});
   }
 
-  stop(cb) {
-    $.get('/api/htpc/stop', cb);
+  stop() {
+    $.get('/api/htpc/stop');
   }
 }
 
