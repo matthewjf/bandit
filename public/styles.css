@@ -1,0 +1,216 @@
+/**************
+  BASE
+**************/
+* {
+  color: #212121;
+  font-size: 14px;
+}
+
+*:focus {
+  outline: none;
+}
+
+body {
+  background-color: #333;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  border: none;
+}
+
+#app {
+  color: white;
+}
+
+/**************
+  POWER
+**************/
+
+#power {
+  height: 20vw;
+  margin-bottom: 3vw;
+}
+
+#power button {
+  margin: 0;
+}
+
+/**************
+  RECEIVER
+**************/
+
+#receiver {
+  background-color: transparent;
+  height: 6vw;
+  margin-bottom: 4vw;
+}
+
+/**************
+  NAVIGATION
+**************/
+
+#navigation {
+  margin-bottom: 5vw;
+}
+
+#navigation .row {
+  height: 24vw;
+  margin: 2.4vw 0;
+}
+
+#navigation .small {
+  font-size: 10vw;
+}
+
+/**************
+  MEDIA
+**************/
+
+#media {
+  margin-bottom: 5vw;
+}
+
+#media .row {
+  height: 10vw;
+  margin: 2.4vw 0;
+}
+
+#media .material-icons {
+  font-size: 10vw;
+}
+
+/**************
+  KODI
+**************/
+
+#kodi {
+  margin-bottom: 3vw;
+}
+
+#kodi .row {
+  height: 12vw;
+}
+
+#kodi button {
+  height: 12vw;
+}
+
+#kodi img {
+  height: 10vw;
+  width: 10vw;
+}
+
+#kodi .material-icons {
+  font-size: 10vw;
+}
+
+/**************
+  VOLUME
+**************/
+
+#volume .row {
+  height: 12vw;
+  margin: 2.4vw 0;
+}
+
+#volume button {
+  height: 12vw;
+}
+
+#volume .material-icons {
+  font-size: 10vw;
+}
+
+/**************
+  BUTTONS
+**************/
+
+.row {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  border-radius: 4px;
+  padding: 0;
+  border: none;
+  height: 100%;
+  flex: 0 0 25%;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.2vw;
+}
+
+button .material-icons {
+  font-size: 15vw;
+  vertical-align: middle;
+  height: 100%;
+  line-height: 100%;
+}
+
+.material-icons {
+  color: white;
+}
+
+/**************
+  COLORS
+**************/
+
+.red      {color: #F44336;}
+.pink     {color: #E91E63;}
+.purple   {color: #9C27B0;}
+.dpurple  {color: #673AB7;}
+.indigo   {color: #3F51B5;}
+.blue     {color: #2196F3;}
+.lblue    {color: #03A9F4;}
+.cyan     {color: #00BCD4;}
+.teal     {color: #009688;}
+.green    {color: #4CAF50;}
+.lgreen   {color: #8BC34A;}
+.lime     {color: #CDDC39;}
+.yellow   {color: #FFEB3B;}
+.amber    {color: #FFC107;}
+.orange   {color: #FF9800;}
+.dorange  {color: #FF5722;}
+
+.grey-0   {color: #212121;}
+.grey-1   {color: #333333;}
+.grey-2   {color: #424242;}
+.grey-3   {color: #555555;}
+.grey-4   {color: #616161;}
+.grey-5   {color: #9E9E9E;}
+.grey-6   {color: #BDBDBD;}
+.grey-7   {color: #E0E0E0;}
+.grey-8   {color: #EEEEEE;}
+.grey-9   {color: #F5F5F5;}
+
+.b-red    {background-color: #F44336;}
+.b-pink   {background-color: #E91E63;}
+.b-purple {background-color: #9C27B0;}
+.b-dpurple{background-color: #673AB7;}
+.b-indigo {background-color: #3F51B5;}
+.b-blue   {background-color: #2196F3;}
+.b-lblue  {background-color: #03A9F4;}
+.b-cyan   {background-color: #00BCD4;}
+.b-teal   {background-color: #009688;}
+.b-green  {background-color: #4CAF50;}
+.b-lgreen {background-color: #8BC34A;}
+.b-lime   {background-color: #CDDC39;}
+.b-yellow {background-color: #FFEB3B;}
+.b-amber  {background-color: #FFC107;}
+.b-orange {background-color: #FF9800;}
+.b-dorange{background-color: #FF5722;}
+
+.b-grey-0 {background-color: #212121;}
+.b-grey-1 {background-color: #333333;}
+.b-grey-2 {background-color: #424242;}
+.b-grey-3 {background-color: #555555;}
+.b-grey-4 {background-color: #616161;}
+.b-grey-5 {background-color: #9E9E9E;}
+.b-grey-6 {background-color: #BDBDBD;}
+.b-grey-7 {background-color: #E0E0E0;}
+.b-grey-8 {background-color: #EEEEEE;}
+.b-grey-9 {background-color: #F5F5F5;}

@@ -1,22 +1,33 @@
 import React from 'react';
+import Power from './power';
+import Receiver from './receiver';
+import Navigation from './navigation';
+import Media from './media';
+import Kodi from './kodi';
+import Volume from './volume';
 
 class Remote extends React.Component {
   constructor() {
     super();
+
+    this.state = {};
   }
 
   componentDidMount() {
-
-  }
-
-  componentWillUnmount() {
-
+    $.get('/api', (commands) => {
+      this.setState({commands: commands});
+    });
   }
 
   render() {
     return (
       <main>
-        hi
+        <Power commands={this.state.commands}/>
+        <Receiver commands={this.state.commands}/>
+        <Kodi commands={this.state.commands}/>
+        <Navigation commands={this.state.commands}/>
+        <Media commands={this.state.commands}/>
+        <Volume commands={this.state.commands}/>
       </main>
     );
   }

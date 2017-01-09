@@ -6,7 +6,7 @@ lirc.init();
 
 var execCB = function(res) {
   return function(err, stdout, stderr) {
-    if (err) res.status(400).json({err: err, stdout: stdout, stderr: stderr});
+    if (err) res.status(404).json({err: err, stdout: stdout, stderr: stderr});
     else res.status(200).json({ status: 'ok', stdout: stdout });
   };
 };
