@@ -126,12 +126,12 @@ body {
 
 .row {
   width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   display: -webkit-flex;
-  -webkit-align-items: center;
+  display: flex;
   -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
 }
 
 button {
@@ -141,12 +141,12 @@ button {
   height: 100%;
   flex: 0 0 25%;
   background-color: transparent;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   display: -webkit-flex;
-  -webkit-align-items: center;
+  display: flex;
   -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  align-items: center;
   margin: 1.2vw;
 }
 
