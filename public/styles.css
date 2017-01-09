@@ -30,8 +30,11 @@ body {
 **************/
 
 #power {
-  height: 20vw;
   margin-bottom: 3vw;
+}
+
+#power .row {
+  height: 20vw;
 }
 
 #power button {
@@ -43,9 +46,11 @@ body {
 **************/
 
 #receiver {
-  background-color: transparent;
-  height: 6vw;
   margin-bottom: 4vw;
+}
+
+#receiver .row {
+  height: 6vw;
 }
 
 /**************
