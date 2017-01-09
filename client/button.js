@@ -48,7 +48,7 @@ class Button extends React.Component {
     return (
       <button
           id={this.props.id}
-          className={`${this.props.buttonClass} ${this.props.text ? 'inline-block' : ''}`}
+          className={`${this.props.buttonClass}${this.props.text ? ' inline-block' : ''}`}
           onClick={this.handleClick}
           onMouseDown={this.handleDown}
           onTouchStart={this.handleDown}
