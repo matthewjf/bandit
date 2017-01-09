@@ -21,6 +21,10 @@ body {
   color: white;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 /**************
   POWER
 **************/

@@ -22655,7 +22655,6 @@
 	    key: 'handleClick',
 	    value: function handleClick(e) {
 	      if (this.props.click) {
-	        console.log('handling click');
 	        e.stopPropagation();
 	        e.preventDefault();
 	        if (navigator.vibrate) navigator.vibrate(100);
@@ -22666,7 +22665,6 @@
 	    key: 'handleDown',
 	    value: function handleDown(e) {
 	      if (this.props.down) {
-	        console.log('handling down');
 	        e.stopPropagation();
 	        e.preventDefault();
 	        if (navigator.vibrate) navigator.vibrate(60000);
@@ -22677,7 +22675,6 @@
 	    key: 'handleUp',
 	    value: function handleUp(e) {
 	      if (this.props.up) {
-	        console.log('handling up');
 	        e.stopPropagation();
 	        e.preventDefault();
 	        if (navigator.vibrate) navigator.vibrate(0);
@@ -22691,7 +22688,7 @@
 	        'button',
 	        {
 	          id: this.props.id,
-	          className: this.props.buttonClass,
+	          className: this.props.buttonClass + ' ' + (this.props.text ? 'inline-block' : ''),
 	          onClick: this.handleClick,
 	          onMouseDown: this.handleDown,
 	          onTouchStart: this.handleDown,

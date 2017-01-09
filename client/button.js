@@ -19,7 +19,6 @@ class Button extends React.Component {
 
   handleClick(e) {
     if (this.props.click) {
-      console.log('handling click');
       e.stopPropagation();
       e.preventDefault();
       if (navigator.vibrate) navigator.vibrate(100);
@@ -29,7 +28,6 @@ class Button extends React.Component {
 
   handleDown(e) {
     if (this.props.down) {
-      console.log('handling down');
       e.stopPropagation();
       e.preventDefault();
       if (navigator.vibrate) navigator.vibrate(60000);
@@ -39,7 +37,6 @@ class Button extends React.Component {
 
   handleUp(e) {
     if (this.props.up) {
-      console.log('handling up');
       e.stopPropagation();
       e.preventDefault();
       if (navigator.vibrate) navigator.vibrate(0);
@@ -51,7 +48,7 @@ class Button extends React.Component {
     return (
       <button
           id={this.props.id}
-          className={this.props.buttonClass}
+          className={`${this.props.buttonClass} ${this.props.text ? 'inline-block' : ''}`}
           onClick={this.handleClick}
           onMouseDown={this.handleDown}
           onTouchStart={this.handleDown}
