@@ -17,6 +17,7 @@ class Remote extends React.Component {
     $.get('/api', (commands) => {
       this.setState({commands: commands});
     });
+    window.scrollTo(0,document.body.scrollHeight);
   }
 
   render() {

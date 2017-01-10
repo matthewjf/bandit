@@ -22122,6 +22122,7 @@
 	      $.get('/api', function (commands) {
 	        _this2.setState({ commands: commands });
 	      });
+	      window.scrollTo(0, document.body.scrollHeight);
 	    }
 	  }, {
 	    key: 'render',
