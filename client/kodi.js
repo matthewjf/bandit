@@ -5,7 +5,7 @@ import {kodiStart, kodiClick, kodiStop} from './util';
 
 class Kodi extends Base {
   handleKodi() {
-    $.get('/api/htpc/htpc/toggle_kodi');
+    $.get('/api/htpc/htpc/kodi');
   }
 
   render() {
