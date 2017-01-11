@@ -28,7 +28,6 @@ class Button extends React.Component {
 
   handleDown(e) {
     if (this.props.down) {
-      console.log("handle down");
       e.stopPropagation();
       e.preventDefault();
       if (navigator.vibrate) navigator.vibrate(60000);
@@ -38,12 +37,16 @@ class Button extends React.Component {
 
   handleUp(e) {
     if (this.props.up) {
-      console.log("handle up");
       e.stopPropagation();
       e.preventDefault();
       if (navigator.vibrate) navigator.vibrate(0);
       this.props.up(e);
     }
+  }
+
+  handleMove(e) {
+    e.preventDefault();
+    e.stopPropagation();
   }
 
   render() {
@@ -56,7 +59,8 @@ class Button extends React.Component {
           onTouchStart={this.handleDown}
           onMouseUp={this.handleUp}
           onTouchEnd={this.handleUp}
-          onTouchCancel={this.handleUp} >
+          onTouchCancel={this.handleUp}
+          onTouchMove={this.handleMove} >
         {this.renderIcon()}
         {this.props.text}
       </button>

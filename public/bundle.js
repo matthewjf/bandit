@@ -22608,7 +22608,7 @@
   \**************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -22643,16 +22643,16 @@
 	  }
 	
 	  _createClass(Button, [{
-	    key: "renderIcon",
+	    key: 'renderIcon',
 	    value: function renderIcon() {
 	      if (this.props.icon) return _react2.default.createElement(
-	        "i",
-	        { className: "material-icons " + this.props.iconClass },
+	        'i',
+	        { className: 'material-icons ' + this.props.iconClass },
 	        this.props.icon
 	      );else return null;
 	    }
 	  }, {
-	    key: "handleClick",
+	    key: 'handleClick',
 	    value: function handleClick(e) {
 	      if (this.props.click) {
 	        e.stopPropagation();
@@ -22662,10 +22662,9 @@
 	      }
 	    }
 	  }, {
-	    key: "handleDown",
+	    key: 'handleDown',
 	    value: function handleDown(e) {
 	      if (this.props.down) {
-	        console.log("handle down");
 	        e.stopPropagation();
 	        e.preventDefault();
 	        if (navigator.vibrate) navigator.vibrate(60000);
@@ -22673,10 +22672,9 @@
 	      }
 	    }
 	  }, {
-	    key: "handleUp",
+	    key: 'handleUp',
 	    value: function handleUp(e) {
 	      if (this.props.up) {
-	        console.log("handle up");
 	        e.stopPropagation();
 	        e.preventDefault();
 	        if (navigator.vibrate) navigator.vibrate(0);
@@ -22684,19 +22682,26 @@
 	      }
 	    }
 	  }, {
-	    key: "render",
+	    key: 'handleMove',
+	    value: function handleMove(e) {
+	      e.preventDefault();
+	      e.stopPropagation();
+	    }
+	  }, {
+	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        "button",
+	        'button',
 	        {
 	          id: this.props.id,
-	          className: "" + this.props.buttonClass + (this.props.text ? ' inline-block' : ''),
+	          className: '' + this.props.buttonClass + (this.props.text ? ' inline-block' : ''),
 	          onClick: this.handleClick,
 	          onMouseDown: this.handleDown,
 	          onTouchStart: this.handleDown,
 	          onMouseUp: this.handleUp,
 	          onTouchEnd: this.handleUp,
-	          onTouchCancel: this.handleUp },
+	          onTouchCancel: this.handleUp,
+	          onTouchMove: this.handleMove },
 	        this.renderIcon(),
 	        this.props.text
 	      );
