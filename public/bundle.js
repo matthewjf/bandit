@@ -22587,11 +22587,11 @@
 	        { id: 'kodi', className: 'row' },
 	        _react2.default.createElement(
 	          'button',
-	          { onClick: this.handleKodi, className: 'grey-8' },
+	          { onClick: this.handleKodi, className: 'grey-6' },
 	          _react2.default.createElement('img', { src: '/kodi-logo.png' })
 	        ),
-	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('subtitles'), buttonClass: 'grey-8', icon: 'chat_bubble_outline' }),
-	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('update_videos'), buttonClass: 'grey-8', icon: 'file_upload' })
+	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('subtitles'), buttonClass: 'grey-6', icon: 'chat_bubble_outline' }),
+	        _react2.default.createElement(_button2.default, { click: (0, _util.kodiClick)('update_videos'), buttonClass: 'grey-6', icon: 'file_upload' })
 	      );
 	    }
 	  }]);
@@ -22647,7 +22647,7 @@
 	    value: function renderIcon() {
 	      if (this.props.icon) return _react2.default.createElement(
 	        'i',
-	        { className: 'material-icons ' + this.props.iconClass },
+	        { className: 'material-icons ' + (this.props.iconClass || '') },
 	        this.props.icon
 	      );else return null;
 	    }

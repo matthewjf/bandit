@@ -10,7 +10,7 @@ class Button extends React.Component {
 
   renderIcon() {
     if (this.props.icon)
-      return <i className={`material-icons ${this.props.iconClass}`}>
+      return <i className={`material-icons ${this.props.iconClass || ''}`}>
         {this.props.icon}
       </i>;
     else
