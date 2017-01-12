@@ -140,7 +140,7 @@ add file `/etc/styemd/system/remote.service`:
 ```
 [Service]
 WorkingDirectory=/home/pi/bandit
-ExecStart=/usr/bin/node /home/pi/bandit/server.js
+ExecStart=/usr/bin/npm start
 Restart=always
 StandardOutput=syslog
 StandardError=syslog
@@ -155,6 +155,11 @@ WantedBy=multi-user.target
 
 run `sudo systemctl enable remote.service`
 check `sudo systemctl status remote.service`
+
+add to `package.json`:
+```
+"start": "git pull && node server.js"
+```
 
 ### wakeonlan
 `sudo apt-get install wakeonlan`
