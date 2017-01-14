@@ -72,10 +72,12 @@ commands.stop = null;
 // Let HTPC tell bandit when it wakes and sleeps
 router.route('/htpc/awake_').get(function(req, res) {
   HTPC_STATUS = 1;
+  res.status(200).json({status: 'ok'});
 });
 
 router.route('/htpc/asleep_').get(function(req, res) {
   HTPC_STATUS = 0;
+  res.status(200).json({status: 'ok'});
 });
 
 module.exports = {commands: commands, router: router, htpcStatus: HTPC_STATUS};
